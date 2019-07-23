@@ -19,3 +19,9 @@ Usefull commands:
 
 * ng new <'name'> #Creates the server 
 * ng serve # into the folder, Starts the server, not for deploy  
+-------
+## July 22, 2019
+------
+Usefull commands with npm cli for angular.
+* npm install #Create node_modules so that foulder could be remove from git
+* npm start # initializes the server
