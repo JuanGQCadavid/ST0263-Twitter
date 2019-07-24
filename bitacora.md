@@ -25,3 +25,4 @@ Usefull commands:
 Usefull commands with npm cli for angular.
 * npm install #Create node_modules so that foulder could be remove from git
 * npm start # initializes the server
+* npm install bootstrap font-awesome
