@@ -5,7 +5,6 @@
         <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
         <link href="style.css" rel="stylesheet" media="screen">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <script src="js/bootstrap.min.js"></script>
         
     </head>
 
@@ -50,6 +49,7 @@
                             <div class="dropdown-divider"></div>
                             <a class="dropdown-item" href="#">Log out</a>
                         </div>
+                        
                     </li>
                 </ul>
             </div>
@@ -59,25 +59,64 @@
         <div class="container">
             <hr/>
 
+
+            <form class="row mb-4" style="background-color: #edf5e1;">
+                   
+                    <div class="col">
+
+                        <div class="my-3 input-group">
+                            <h3 class="mx-4">Title:</h3>
+                            <input type="text" class="form-control" placeholder="Username" aria-label="Topic" aria-describedby="basic-addon1">
+                        </div>
+    
+                        <hr/>
+    
+                        <div class="row mx-5 text-center">
+                            <textarea rows="4" cols="100" class="form-control" id="exampleFormControlTextarea1"></textarea>
+                        </div>
+                        
+                        <hr/>
+    
+                        <div class="mx-4 d-flex flex-row-reverse" >
+                            <button class="btn btn-outline-success my-2" type="submit">Post</button>
+                        </div>
+                    </div>
+                </form>
+                <hr/>
+
             <div class="row mb-4" style="background-color: #edf5e1;">
-                <div class="col-md-2" style="background-color: black;">
+                <div class="col-md-2 border border-light border-0" id="left_body" style="background-color: #123c60;" >
                     
                 <!-- this part is only for the comment specification, it contains
                 the user photo and the tags used on the comment.
 
                 photo
-
+                            
                 tags
 
                 Persons -->
                     <div class="row">
-                        <p>Photo</p>
+                        
+                        <img src="img/upgrade.png" class="rounded-circle border-0 m-4" width="100" height="100">
+                        
+                    </div>
+                    <div class="row">
+                        <h5> By name </h5>
+                    </div>
+                    <hr/>
+                    <div class="row">
+                        <h5> Tags </h5>
                     </div>
 
                     <div class="row">
                         <p> Tags </p>
                     </div>
 
+                    <hr/>
+                    <div class="row">
+                        <h5> People </h5>
+                    </div>
+                    
                     <div class="row">
                         <p> People </p>
                     </div>
@@ -106,65 +145,13 @@
                     
                     <hr/>
 
-                    <div class="row">
-                            <p> Comments </p>
+                    <div class="mx-5 d-flex flex-row-reverse" >
+                       <p class="text-right dm-5">Fecha de modificacion: </p>
                     </div>
-
                 </div>
             </div>
-
             <hr/>
-
-            <div class="row mb-4" style="background-color: #edf5e1;">
-                    <div class="col-md-2" style="background-color: black;">
-                        
-                    <!-- this part is only for the comment specification, it contains
-                    the user photo and the tags used on the comment.
-    
-                    photo
-    
-                    tags
-    
-                    Persons -->
-                        <div class="row">
-                            <p>Photo</p>
-                        </div>
-    
-                        <div class="row">
-                            <p> Tags </p>
-                        </div>
-    
-                        <div class="row">
-                            <p> People </p>
-                        </div>
-    
-                    </div>
-                    <div class="col-md-10">
-                        <!-- This part contains the title, text and comments
-    
-                        Title
-    
-                        Text
-    
-                        Comments -->
-    
-                        <div class="row">
-                                <p> Title </p>
-                        </div>
-    
-                        <div class="row">
-                                <p> Text </p>
-                        </div>
-    
-                        <div class="row">
-                                <p> Comments </p>
-                        </div>
-    
-                    </div>
-                </div>
-
-
-
+            
         </div>
 
 
