@@ -6,10 +6,11 @@ var TweetSchema = mongoose.Schema({
     tile: String,
     authorId: String,
     body: String,
-    tags: [{tag: String}],
-    date: { type: Date, default: Date.now}
+    tags: [String],
+    date: String
 })
-
+//      
+//    
 Tweet = exports.Tweet = mongoose.model('Tweet',TweetSchema);
 
 exports.initializeMongo = function(){
@@ -30,8 +31,10 @@ var addRandomTweet = function(){
         title: 'Tweet test',
         authorId: 'Back-end',
         body: 'Testing body',
-        tags: [{tag: '#Test'}, {tag: '#AnOtherTest'}]
+        tags: ['#Test', '#anOtherTest'],
+        date: '04/08/2019'
     });
+    //         tags: [{tag: '#Test'}, {tag: '#AnOtherTest'}]
     newTweet.save(function (err,fluffy){
         if (err) return console.error(err);
         console.log("There is a new test Tweet.");
