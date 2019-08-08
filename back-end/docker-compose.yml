@@ -11,7 +11,7 @@ services:
       - /usr/src/app/node_modules
     depends_on:
       - "mongo"
-  
+
   mongo:
     image: "mongo"
     ports:

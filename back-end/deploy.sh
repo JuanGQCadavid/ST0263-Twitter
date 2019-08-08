@@ -25,5 +25,7 @@ else
 fi
 #tmux!!
 
+sudo yum install tmux
+
 docker-compose build
 docker-compose up
