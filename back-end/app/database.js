@@ -3,14 +3,15 @@ const mongoose = require('mongoose');
 const DATABASE_CONECTION = 'mongodb://mongo/test';
 
 var TweetSchema = mongoose.Schema({
-    tile: String,
+    title: String,
     authorId: String,
     body: String,
     tags: [String],
     date: String
 })
-//      
-//    
+
+
+
 Tweet = exports.Tweet = mongoose.model('Tweet',TweetSchema);
 
 exports.initializeMongo = function(){
@@ -22,11 +23,24 @@ exports.initializeMongo = function(){
     db.on('error', console.error.bind(console, 'Connection error: We might not be as connected as I tgought'));
     db.once('open', function(){
         console.log('We are connected! You and I!!');
-        addRandomTweet();
     });
 }
 
-var addRandomTweet = function(){
+exports.removeTweets = function() {
+
+    Tweet.deleteMany({}, function(err) {
+            if (err) {
+                return console.error(err)
+            } else {
+                console.log("ALL REGISTER DELETE!")
+            }
+        }
+    );
+};
+
+
+
+exports.addRandomTweet = function(){
     var newTweet = new Tweet({
         title: 'Tweet test',
         authorId: 'Back-end',
