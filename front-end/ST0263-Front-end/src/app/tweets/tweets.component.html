@@ -1,68 +1,67 @@
 <hr/>
 
-            <div class="row mb-4" style="background-color: #edf5e1;">
-                <div class="col-md-2 border border-light border-0" id="left_body" style="background-color: #123c60;" >
+<div class="row mb-4" style="background-color: #edf5e1;"
+  *ngFor="let tweet of tweetsList">
+  <div class="col-md-2 border border-light border-0" id="left_body" style="background-color: #123c60;" >
 
-                <!-- this part is only for the comment specification, it contains
-                the user photo and the tags used on the comment.
+  <!-- this part is only for the comment specification, it contains
+  the user photo and the tags used on the comment.
 
-                photo
+  photo
 
-                tags
+  tags
 
-                Persons -->
-                    <div class="row">
+  Persons -->
+  <div class="row">
 
-                        <img src="img/upgrade.png" class="rounded-circle border-0 m-4" width="100" height="100">
+    <img src="img/upgrade.png" class="rounded-circle border-0 m-4" width="100" height="100">
 
-                    </div>
-                    <div class="row">
-                        <h5> By name </h5>
-                    </div>
-                    <hr/>
-                    <div class="row">
-                        <h5> Tags </h5>
-                    </div>
+  </div>
+  <div class="row">
+    <h5> By {{tweet.authorId}} </h5>
+  </div>
+  <hr/>
+  <div class="row">
+    <h5> Tags </h5>
+  </div>
+  <div class="row">
 
-                    <div class="row">
-                        <p> Tags </p>
-                    </div>
+    <p *ngFor="let tag of tweet.tags">{{tag}} - </p>
+  </div>
 
-                    <hr/>
-                    <div class="row">
-                        <h5> People </h5>
-                    </div>
+  <hr/>
+  <div class="row">
+    <h5> People </h5>
+  </div>
 
-                    <div class="row">
-                        <p> People </p>
-                    </div>
+  <div class="row">
+    <p> People </p>
+  </div>
 
-                </div>
-                <div class="col-md-10">
-                    <!-- This part contains the title, text and comments
+  </div>
+  <div class="col-md-10">
+    <!-- This part contains the title, text and comments
 
-                    Title
+    Title
 
-                    Text
+    Text
 
-                    Comments -->
+    Comments -->
 
-                    <div>
-                            <h2 class="text-center my-3"> Title </h2>
-                    </div>
+    <div>
+            <h2 class="text-center my-3"> {{tweet.title}} </h2>
+    </div>
 
-                    <hr/>
+    <hr/>
 
-                    <div class="row mx-5 text-justify">
-                            <p class="dm-5"> Lorem, ipsum dolor sit amet consectetur adipisicing elit. Nobis similique odit sint explicabo soluta quae saepe ea est, rerum temporibus deserunt enim sit, in accusantium corporis. Sed magni ducimus vel.
-                                Lorem ipsum dolor sit amet, consectetur adipisicing elit. Placeat sint sed quod necessitatibus magnam unde eum a blanditiis dignissimos dolores tenetur delectus officiis corporis amet adipisci, rem perspiciatis vero vitae.
-                            Lorem ipsum dolor sit amet consectetur adipisicing elit. Exercitationem numquam maxime similique praesentium excepturi consequuntur eum, dicta necessitatibus laborum eius nesciunt sequi? Ut dolorum suscipit quas dolore magnam tenetur repellat! </p>
-                    </div>
+    <div class="row mx-5 text-justify">
+            <p class="dm-5">{{tweet.body}}</p>
+    </div>
 
-                    <hr/>
+    <hr/>
 
-                    <div class="mx-5 d-flex flex-row-reverse" >
-                       <p class="text-right dm-5">Fecha de modificacion: </p>
-                    </div>
-                </div>
-            </div>
+    <div class="mx-5 d-flex flex-row-reverse" >
+        <p class="text-right dm-5">Fecha de modificacion: {{tweet.date}}</p>
+    </div>
+  </div>
+</div>

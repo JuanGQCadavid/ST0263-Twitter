@@ -6,6 +6,8 @@ import { AppComponent } from './app.component';
 import { TweetsComponent } from './tweets/tweets.component';
 import { NavegationBarComponent } from './navegation-bar/navegation-bar.component';
 import { TweetCreatorComponent } from './tweet-creator/tweet-creator.component';
+import { HttpClientModule } from '@angular/common/http';
+import { FormsModule } from '@angular/forms';
 
 @NgModule({
   declarations: [
@@ -16,7 +18,9 @@ import { TweetCreatorComponent } from './tweet-creator/tweet-creator.component';
   ],
   imports: [
     BrowserModule,
-    AppRoutingModule
+    AppRoutingModule,
+    FormsModule,
+    HttpClientModule
   ],
   providers: [],
   bootstrap: [AppComponent]

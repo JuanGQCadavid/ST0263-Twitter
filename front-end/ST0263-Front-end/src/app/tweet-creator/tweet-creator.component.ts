@@ -1,4 +1,7 @@
 import { Component, OnInit } from '@angular/core';
+import { ITweet } from "../share//tweet"
+import { TweetService } from '../share//tweets.service';
+import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 
 @Component({
   selector: 'app-tweet-creator',
@@ -7,9 +10,13 @@ import { Component, OnInit } from '@angular/core';
 })
 export class TweetCreatorComponent implements OnInit {
 
-  constructor() { }
+  constructor(private tweetService: TweetService) { }
 
   ngOnInit() {
+  }
+
+  onCreate():void{
+
   }
 
 }
