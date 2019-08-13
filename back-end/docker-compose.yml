@@ -3,7 +3,7 @@ services:
   web:
     image: docker-node-express-mongoapp
     build: ./app
-    command: node index.js
+    command: node app.js
     ports:
       - "3000:3000"
     volumes:
@@ -11,7 +11,6 @@ services:
       - /usr/src/app/node_modules
     depends_on:
       - "mongo"
-
   mongo:
     image: "mongo"
     ports:
