@@ -1,6 +1,20 @@
-<h1>Hi {{currentUser.firstName}}!</h1>
-<p>You're logged in with Angular 8!!</p>
-<h3>All registered users:</h3>
-<ul>
 
-</ul>
+
+<div class="jumbotron">
+    <div class="row">
+        <div class="col-sm-6 offset-sm-3">
+            <h1>Hi {{currentUser.firstName}}, ({{currentUser.username}})!</h1>
+            <p>Que quieres comentar el dia de hoy?</p>
+        </div>
+    </div>
+</div>
+
+
+<div class="jumbotron">
+        <div class="row">
+            <div class="col-sm-6 offset-sm-3">
+                <tweet-creator></tweet-creator>
+            </div>
+        </div>
+    </div>
+

@@ -13,10 +13,13 @@ import { fakeBackendProvider } from './helpers/fake-backend';
 
 import { JwtInterceptor } from './helpers/jwt.interceptor';
 import { ErrorInterceptor } from './helpers/error.interceptor';
+
 import { HomeComponent } from './home/home.component';
 import { LoginComponent } from './login/login.component';
 import { RegisterComponent } from './register/register.component';
 import { AlertComponent } from './components/alert.component';
+
+import { TweetCreatorComponent } from './tweetCreator/tweet-creator.component'
 
 @NgModule({
   imports: [
@@ -30,7 +33,8 @@ import { AlertComponent } from './components/alert.component';
       HomeComponent,
       LoginComponent,
       RegisterComponent,
-      AlertComponent
+      AlertComponent,
+      TweetCreatorComponent
   ],
   providers: [
       { provide: HTTP_INTERCEPTORS, useClass: JwtInterceptor, multi: true },
