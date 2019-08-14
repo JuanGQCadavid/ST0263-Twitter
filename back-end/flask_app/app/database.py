@@ -14,6 +14,7 @@ class DataBase:
 
         #Add or use a collection
         self.users = self.db.users
+        self.tweets = self.db.tweets
 
         #Tokenizer counter
         self.tokenCounter = 0
@@ -65,3 +66,20 @@ class DataBase:
     def find_user(self,username):
         result = self.users.find_one({'username':username})
         return result
+
+    def save_tweet(self,title,body,username,date,tags):
+        new_tweet_data = {
+            'title':title,
+            'body': body,
+            'username': username,
+            'date': date,
+            'tags': tags,
+            'comments': None
+        }
+
+        result = self.tweets.insert_one(new_tweet_data).inserted_id
+
+        if result == None:
+            return None;
+
+        return new_tweet_data

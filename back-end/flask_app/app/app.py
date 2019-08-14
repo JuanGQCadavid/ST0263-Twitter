@@ -13,14 +13,42 @@ def hello_world():
     return 'Hello perras'
 
 
-@app.route('/tweets', methods=['POST', 'GET'])
-def tweets_interface():
+@app.route('/tweets/save', methods=['POST'])
+def tweet_save():
     #Create new post
-    if request.method == 'POST':
-        return "Register post - Coming soon"
+    data = request.get_json()
+    title = data['title']
+    body = data['body']
+    username = data['username']
+    date = data['date']
+
+    tags = find_tags(body)
+
+    print('data ->', data)
+    print('tags ->',tags)
+
+    response = db.save_tweet(title,body,username,date,tags);
+
+    if response == None:
+        response = {
+            'status':'err',
+            'err:': 'faild to create new tweet.'
+        }        
     else:
-        return "get all posts - Coming soon"
+        response = {
+            'status': 'done',
+            'done':'The tweet has ben save'
+        }
+    return jsonify(response)
     
+def find_tags(body):
+    boddy_splitted = body.split(" ")
+    tags = []
+    for segment in boddy_splitted:
+        if segment[0] == '#':
+            tags.append(segment)
+
+    return tags
 
 @app.route('/tweets/comment/<tweet_id>' , methods=['POST'])
 def tweet_comment():
