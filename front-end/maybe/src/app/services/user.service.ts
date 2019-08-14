@@ -5,7 +5,7 @@ import { User } from '../models/User';
 
 @Injectable({ providedIn: 'root' })
 export class UserService {
-    private apiUrl: string  = '';
+    private apiUrl: string  = 'http://localhost:5000';
     constructor(private http: HttpClient) { }
 
     getAll() {
@@ -17,6 +17,6 @@ export class UserService {
     }
 
     delete(id: number) {
-        return this.http.delete(`${this.apiUrl}/users/${id}`);
+        return this.http.delete(`${this.apiUrl}/user/${id}`);
     }
 }
