@@ -16,7 +16,7 @@ import { DatePipe } from '@angular/common';
 @Component({
   selector: 'app-tweet-handler',
   templateUrl: './tweet-handler.component.html',
-  styleUrls: ['./tweet-handler.component.less']
+  styleUrls: ['./tweet-handler.component.css']
 })
 export class TweetHandlerComponent implements OnInit {
   currentUser: User;
