@@ -21,7 +21,6 @@ import { AlertComponent } from './components/alert.component';
 
 import { TweetCreatorComponent } from './tweetCreator/tweet-creator.component'
 
-import {TweetViewerComponent} from './tweetViewer/tweet-viewer.component';
 import { TweetHandlerComponent } from './tweet-handler/tweet-handler.component'
 
 @NgModule({
@@ -38,7 +37,6 @@ import { TweetHandlerComponent } from './tweet-handler/tweet-handler.component'
       RegisterComponent,
       AlertComponent,
       TweetCreatorComponent,
-      TweetViewerComponent,
       TweetHandlerComponent
   ],
   providers: [
