@@ -27,11 +27,17 @@ class DataBase:
             'token' : None
         }
         result = self.users.insert_one(new_user_data).inserted_id
-        print('One post: {0}'.format(result))
-        return result
+
+        if result == None:
+            return None;
+
+        return new_user_data
     
     def createToken(self):
-        return "The_Tokenizer_code_({})".format(self.tokenCounter)
+        new_token = "The_Tokenizer_code_({})".format(self.tokenCounter)
+        self.tokenCounter = self.tokenCounter + 1
+
+        return new_token
         
     
     def login(self, username, password):
@@ -40,7 +46,7 @@ class DataBase:
                                       'password': password})
         
         if (result == None):
-            return result
+            return None
 
         token = self.createToken();
 

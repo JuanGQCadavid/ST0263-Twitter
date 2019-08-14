@@ -2,35 +2,91 @@ from database import DataBase
 from flask import Flask, request,jsonify
 import json
 from bson.json_util import dumps
+from flask_cors import CORS
+
 app = Flask(__name__)
+CORS(app)
 db = None
 
 @app.route('/')
 def hello_world():
     return 'Hello perras'
 
-@app.route('/users', methods=['POST', 'GET'])
-def users_interface():
-    #return jsonify(data)
+
+@app.route('/tweets', methods=['POST', 'GET'])
+def tweets_interface():
+    #Create new post
     if request.method == 'POST':
-        data = json.loads(request.args)
-        return data
-        # username = request.args.get('username')
-        # password = request.args.get('password')
-        # firstName = request.args.get('firstName')
-        # lastName = request.args.get('lastName')
+        return "Register post - Coming soon"
+    else:
+        return "get all posts - Coming soon"
+    
 
-        # is_already = db.find_user(username)
+@app.route('/tweets/comment/<tweet_id>' , methods=['POST'])
+def tweet_comment():
+    return "Comment a tweet, comming soon"
 
-        # print('**********')
-        # if is_already == None :
-        #     response = db.register(username,password,firstName,lastName)
-        # else:
-        #     response = [{
-        #         'err':'User already created'
-        #     }]
-        
-        # return response
+@app.route('/tweets/update/<tweet_id>' , methods=['POST'])
+def tweet_update():
+    return "Update a tweet, comming soon"
+
+@app.route('/tweets/delete/<tweet_id>' , methods=['POST'])
+def tweet_delete():
+    return "Delete a tweet, comming soon"
+
+
+
+@app.route('/users/authenticate', methods=['POST'])
+def users_authenticate():
+    data = request.get_json()
+
+    username = data['username']
+    password = data['password']
+
+    response = db.login(username, password)
+
+    if response == None:
+        response = {
+            'status': 'err',
+            'err':'User not found'
+        }
+    else:
+        response.pop('_id')
+
+    return jsonify(response)
+
+
+@app.route('/users/register', methods=['POST'])
+def users_interface():
+
+    data = request.get_json()
+
+    print(data)
+
+    username = data['username']
+    password = data['password']
+    firstName = data['firstName']
+    lastName = data['lastName']
+
+    is_already = db.find_user(username)
+    
+    print('**********')
+    if is_already == None :
+        db.register(username,password,firstName,lastName)
+        #response.pop('_id')
+        response = {
+            'status':'done',
+            'done:': 'user created'
+        }        
+    else:
+        response = {
+            'status': 'err',
+            'err':'User already created'
+        }
+    print(response)
+    return jsonify(response)
+    
+
 
 if __name__ == '__main__':
     global DataBase
