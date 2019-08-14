@@ -1,20 +1,36 @@
 
 
-<div class="jumbotron">
-    <div class="row">
-        <div class="col-sm-6 offset-sm-3">
-            <h1>Hi {{currentUser.firstName}}, ({{currentUser.username}})!</h1>
-            <p>Que quieres comentar el dia de hoy?</p>
+
+
+
+<div class="modal-body row">
+
+    <div class="col-md-5">
+        <div class="jumbotron">
+            <div class="row">
+                <div class="col-sm-12 text-center">
+                    <h1>Hi {{currentUser.firstName}}, ({{currentUser.username}})!</h1>
+                </div>
+            </div>
+        </div>
+        <div class="jumbotron">
+            <div class="row">
+                <div class="col-sm-12">
+                    <tweet-creator></tweet-creator>
+                </div>
+            </div>
+        </div>
+    
+    </div>
+    <div class="col-md-7">
+        <div class="jumbotron">
+            <div class="row">
+                <div class="col-sm-12">
+                    
+                </div>
+            </div>
         </div>
     </div>
 </div>
 
-
-<div class="jumbotron">
-        <div class="row">
-            <div class="col-sm-6 offset-sm-3">
-                <tweet-creator></tweet-creator>
-            </div>
-        </div>
-    </div>
 
