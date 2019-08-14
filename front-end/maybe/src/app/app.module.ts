@@ -21,6 +21,9 @@ import { AlertComponent } from './components/alert.component';
 
 import { TweetCreatorComponent } from './tweetCreator/tweet-creator.component'
 
+import {TweetViewerComponent} from './tweetViewer/tweet-viewer.component';
+import { TweetHandlerComponent } from './tweet-handler/tweet-handler.component'
+
 @NgModule({
   imports: [
       BrowserModule,
@@ -34,7 +37,9 @@ import { TweetCreatorComponent } from './tweetCreator/tweet-creator.component'
       LoginComponent,
       RegisterComponent,
       AlertComponent,
-      TweetCreatorComponent
+      TweetCreatorComponent,
+      TweetViewerComponent,
+      TweetHandlerComponent
   ],
   providers: [
       { provide: HTTP_INTERCEPTORS, useClass: JwtInterceptor, multi: true },

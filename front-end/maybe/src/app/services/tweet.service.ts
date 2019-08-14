@@ -10,8 +10,8 @@ export class TweetService{
 
     constructor(private http: HttpClient){ }
 
-    getAll(){
-        return this.http.get<ITweet[]>(`${this.apiUrl}/tweets`)
+    getTweets(){
+        return this.http.get<ITweet[]>(`${this.apiUrl}/tweets/getAll`)
     }
 
     creatTweet(tweet: ITweet){
