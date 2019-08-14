@@ -83,3 +83,22 @@ class DataBase:
             return None;
 
         return new_tweet_data
+    
+    def get_tweets(self):
+        results = self.tweets.find()
+
+        if results == None:
+            return [];
+
+        tweets = []
+        for tweet in results:
+            print(tweet)
+            id = str(tweet['_id'])
+            tweet.pop('_id')
+            tweet['_id'] = id
+
+            tweets.append(tweet)
+
+
+        return tweets
+        

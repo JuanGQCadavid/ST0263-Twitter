@@ -50,6 +50,15 @@ def find_tags(body):
 
     return tags
 
+
+
+@app.route('/tweets/getAll', methods=['GET'])
+def tweets_all():
+    tweets = db.get_tweets()
+    print(tweets)
+    return jsonify(tweets)
+
+
 @app.route('/tweets/comment/<tweet_id>' , methods=['POST'])
 def tweet_comment():
     return "Comment a tweet, comming soon"
@@ -61,7 +70,6 @@ def tweet_update():
 @app.route('/tweets/delete/<tweet_id>' , methods=['POST'])
 def tweet_delete():
     return "Delete a tweet, comming soon"
-
 
 
 @app.route('/users/authenticate', methods=['POST'])
