@@ -9,8 +9,10 @@ const server = 'mongo'
 const database = 'test'
 
 class Database {
+
     constructor(){
         this._connect()
+        this.token_counter = 0
     }
     _connect(){
         mongoose.connect(`mongodb://${server}/${database}`)
@@ -39,8 +41,32 @@ class Database {
             })
     }
 
-    user_find(username,password,callback){
-        UserModel.find({
+    user_logout(username, callback){
+        UserModel.findOneAndUpdate({
+            username:username
+        },
+        {
+            token:'None'
+        })
+        .lean()
+        .exec(function(err, docs){
+            if (err) return callback(err,null)
+            return callback(null, docs)
+        })
+    }
+
+    user_login(username,password,callback){
+        var tokenId = `Token_generate_number_(${this.token_counter})`
+        this.token_counter = this.token_counter + 1;
+        UserModel.findOneAndUpdate({
+            username: username,
+            password: password
+        },
+        {
+            token: tokenId
+        })
+
+        UserModel.findOne({
             username: username,
             password: password
         })
@@ -49,7 +75,7 @@ class Database {
 
             // If there is an error, return the error and no results
             if(err) return callback(err, null)
-
+            
             // No error, return the docs
             callback(null, docs)
         });

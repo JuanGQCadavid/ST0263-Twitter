@@ -10,7 +10,7 @@ router.get('/login', function(req,res){
     var username = req.query.username;
     var password = req.query.password;
 
-    database.user_find(username,password, function(err,docs){
+    database.user_login(username,password, function(err,docs){
         if (err) return res.send('No papi, error' + err)
         console.log(docs)
         return res.send(docs)
@@ -30,6 +30,15 @@ router.post('/register', function(req,res){
 
 });
 
+router.post('/logout', function(req,res){
+    var username = req.query.username;
+
+    database.user_logout(username, function(err,docs){
+        if (err) return res.send(err)
+
+        return res.send(docs)
+    })
+})
 // Get info of user :id
 router.get('/:username', function(req,res){
     var username = req.params.username;
