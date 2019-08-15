@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { FormBuilder, FormGroup, Validators, Form } from '@angular/forms';
+import { FormBuilder, FormGroup, Validators, Form , NgModel } from '@angular/forms';
 
 import { first } from 'rxjs/operators';
 
@@ -21,6 +21,15 @@ import { DatePipe } from '@angular/common';
 export class TweetHandlerComponent implements OnInit {
   currentUser: User;
   tweet_list: ITweet[];
+  
+
+  _listFilter: String = ""
+  get listFilter(): String{
+      return this._listFilter;
+  }
+  set listFilter(value: String){
+      this._listFilter = value.toLowerCase();
+  }
 
   constructor(private authenticationService: AuthenticationService,
                 private tweetService: TweetService

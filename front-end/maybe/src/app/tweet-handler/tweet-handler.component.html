@@ -1,3 +1,24 @@
+
+<!-- Tweets panel -->
+
+<h2>Filter by: #{{listFilter}} </h2>
+
+<div class="input-group mb-3">
+  <div class="input-group-prepend">
+    <span class="input-group-text" id="basic-addon1">#</span>
+  </div>
+  <input type="text" [(ngModel)]='listFilter' class="form-control" placeholder="#TheTweeter" />
+</div>
+
+<div class="row mb-4">
+  <div class="col-md-12 border border-light border-0">
+    
+    
+  </div>
+</div>
+
+<!-- Tweets list -->
+
 <div class="row mb-4" 
   *ngFor="let tweet of tweet_list">
   <div class="col-md-2 border border-light border-0 jumbotron" 
