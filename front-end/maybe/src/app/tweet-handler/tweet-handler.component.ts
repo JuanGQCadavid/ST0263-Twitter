@@ -21,14 +21,24 @@ import { DatePipe } from '@angular/common';
 export class TweetHandlerComponent implements OnInit {
   currentUser: User;
   tweet_list: ITweet[];
+  tweet_list_filter: ITweet[];
   
 
-  _listFilter: String = ""
-  get listFilter(): String{
+  _listFilter: string = ""
+  get listFilter(): string{
       return this._listFilter;
   }
-  set listFilter(value: String){
+  set listFilter(value: string){
       this._listFilter = value.toLowerCase();
+
+      this.tweet_list_filter = this.listFilter ? this.perform_filter(this.listFilter) : this.tweet_list;
+  }
+
+  perform_filter(filter_by: string): ITweet[]{
+    filter_by = filter_by.toLowerCase()
+
+    return this.tweet_list.filter( (tweet: ITweet) => 
+        tweet.tags.toString().toLowerCase().indexOf(filter_by) != -1)
   }
 
   constructor(private authenticationService: AuthenticationService,
@@ -38,11 +48,13 @@ export class TweetHandlerComponent implements OnInit {
                 }
 
   ngOnInit(){
+    
     this.tweetService.getTweets()
         .pipe(first())
         .subscribe(
             data =>{
                 this.tweet_list = data;
+                this.tweet_list_filter = this.tweet_list;
             }
         )
     }

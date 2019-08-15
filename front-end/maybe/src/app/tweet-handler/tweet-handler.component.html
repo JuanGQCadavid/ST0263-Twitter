@@ -1,7 +1,7 @@
 
 <!-- Tweets panel -->
 
-<h2>Filter by: #{{listFilter}} </h2>
+<h2>Filter by: {{listFilter}} </h2>
 
 <div class="input-group mb-3">
   <div class="input-group-prepend">
@@ -20,7 +20,7 @@
 <!-- Tweets list -->
 
 <div class="row mb-4" 
-  *ngFor="let tweet of tweet_list">
+  *ngFor="let tweet of tweet_list_filter">
   <div class="col-md-2 border border-light border-0 jumbotron" 
     id="left_body" >
     <!-- style="background-color: #123c60;" > -->
