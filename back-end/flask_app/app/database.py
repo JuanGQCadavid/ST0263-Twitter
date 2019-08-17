@@ -1,9 +1,9 @@
-from pymongo import MongoClient
-
+from pymongo import MongoClient, DESCENDING
+from bson.objectid import ObjectId
 
 class DataBase:
     def __init__(self):
-        host = 'localhost'
+        host = 'mongo-server'
         port = 27017
         
         #Connect to mongo
@@ -84,8 +84,12 @@ class DataBase:
 
         return new_tweet_data
     
+    def delete_tweet(self, tweet_id):
+        result = self.tweets.remove(ObjectId(tweet_id))
+        return result
+
     def get_tweets(self):
-        results = self.tweets.find()
+        results = self.tweets.find()#.sort('date',DESCENDING)
 
         if results == None:
             return [];

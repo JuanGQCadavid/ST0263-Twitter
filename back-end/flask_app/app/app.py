@@ -55,22 +55,41 @@ def find_tags(body):
 @app.route('/tweets/getAll', methods=['GET'])
 def tweets_all():
     tweets = db.get_tweets()
+    tweets = tweets[::-1]
     print(tweets)
     return jsonify(tweets)
 
 
-@app.route('/tweets/comment/<tweet_id>' , methods=['POST'])
+@app.route('/tweets/comment/' , methods=['POST'])
 def tweet_comment():
+
     return "Comment a tweet, comming soon"
 
 @app.route('/tweets/update/<tweet_id>' , methods=['POST'])
 def tweet_update():
     return "Update a tweet, comming soon"
 
-@app.route('/tweets/delete/<tweet_id>' , methods=['POST'])
+@app.route('/tweets/delete' , methods=['POST'])
 def tweet_delete():
-    return "Delete a tweet, comming soon"
+    data = request.get_json()
+    tweet_id = data['_id']
+    response = db.remove(tweet_id)
 
+    print('*+++++++*+++++++*+++')
+    print(response)
+
+    if response == None:
+        response = {
+            'status':'err',
+            'err:': 'faild to deleted the tweet.'
+        }        
+    else:
+        response = {
+            'status': 'done',
+            'done':'The tweet has ben delete'
+        }
+
+    return "Delete a tweet, comming soon"
 
 @app.route('/users/authenticate', methods=['POST'])
 def users_authenticate():
@@ -91,6 +110,10 @@ def users_authenticate():
 
     return jsonify(response)
 
+@app.route('/test/test_db')
+def test_db():
+    db.save_tweet("Testing DB","Reggeton! #YES","TheBackEnd","Today",['#YES'])
+    return tweets_all()
 
 @app.route('/users/register', methods=['POST'])
 def users_interface():
