@@ -33,6 +33,10 @@
   tags
 
   Persons -->
+  <div class="row" *ngIf="tweet.username === currentUser.username">
+      <a (click) = "deleteTweet(tweet)"><img src="assets/img/recycle-bin.png" width="25" height="25"></a>
+    </div>
+    <hr *ngIf="tweet.username === currentUser.username"/>
   <div class="row">
     <h5> By {{tweet.username}} </h5>
   </div>

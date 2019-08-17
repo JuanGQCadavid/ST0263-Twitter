@@ -42,7 +42,9 @@ export class TweetHandlerComponent implements OnInit {
   }
 
   constructor(private authenticationService: AuthenticationService,
-                private tweetService: TweetService
+                private tweetService: TweetService,
+                private alertService: AlertService,
+                private router: Router
                 ){
                     this.currentUser = this.authenticationService.currentUserValue;
                 }
@@ -57,6 +59,27 @@ export class TweetHandlerComponent implements OnInit {
                 this.tweet_list_filter = this.tweet_list;
             }
         )
+    }
+
+    deleteTweet(tweet: ITweet){
+        this.alertService.clear();
+        console.log(tweet.title);
+        this.tweetService.deleteTweet(tweet)
+            .pipe(first())
+            .subscribe(
+                data => {                    
+                    if(data['status'] == 'err'){
+                        this.alertService.error(data['err'], true)
+                        this.router.navigate(['/login'])
+                    }
+                    else{
+                        this.alertService.success(data['done'], true);
+                        this.router.navigate(['/login'])
+                    }
+                }
+            )
+        
+
     }
 
 }

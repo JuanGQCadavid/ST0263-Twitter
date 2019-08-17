@@ -16,7 +16,10 @@ export class TweetService{
 
     creatTweet(tweet: ITweet){
         return this.http.post(`${this.apiUrl}/tweets/save`, tweet)
+    }
 
+    deleteTweet(tweet: ITweet){
+        return this.http.post(`${this.apiUrl}/tweets/delete`,tweet)
     }
 }
 

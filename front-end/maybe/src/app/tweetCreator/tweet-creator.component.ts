@@ -70,16 +70,18 @@ export class TweetCreatorComponent implements OnInit {
                     if(data['status'] == 'err'){
                         this.alertService.error(data['err'], true)
                         this.loading = false;
+                        this.router.navigate(['/login'])
                     }
                     else{
                         this.alertService.success(data['done'], true);
                         this.loading = false;
-                        this.router.navigate(['/']);
+                        this.router.navigate(['/login'])
                     }
                 },
                 error => {
                     this.alertService.error(error);
                     this.loading = false;
                 });
+        
     }
 }
