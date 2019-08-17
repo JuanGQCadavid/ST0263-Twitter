@@ -3,6 +3,7 @@ from flask import Flask, request,jsonify
 import json
 from bson.json_util import dumps
 from flask_cors import CORS
+import os
 
 app = Flask(__name__)
 CORS(app)
@@ -155,10 +156,25 @@ def users_interface():
 
 if __name__ == '__main__':
     global DataBase
-    db = DataBase()
+
+    development_state = True
+
     try:
-        debug=True
-        app.run(host= '0.0.0.0', port= 5000, debug=debug)
+        state = os.environ['ENVSTATE']
+    except:
+        state = os.environ['ENVSTATE'] = "DEV"
+
+
+
+    if state != None and state == 'PROD':
+        development_state = False
+        print("Working on Production enviroment")
+    else:
+        print("Working on Development enviroment")
+    
+    try:
+        db = DataBase(development_state)
+        app.run(host= '0.0.0.0', port= 5000, debug=development_state)
     except KeyboardInterrupt:
         print('Closing server...')
         

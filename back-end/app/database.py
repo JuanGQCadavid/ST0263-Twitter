@@ -2,8 +2,12 @@ from pymongo import MongoClient, DESCENDING
 from bson.objectid import ObjectId
 
 class DataBase:
-    def __init__(self):
-        host = 'localhost'
+    def __init__(self, development_state):
+        if development_state:
+            host = 'localhost'
+        else:
+            host = 'mongo-server'
+        
         port = 27017
         
         #Connect to mongo

@@ -2,6 +2,9 @@ FROM python:3.6
 
 MAINTAINER Juan Gonzalo Quiroz Cadavid
 
+ARG ENVSTATE='PROD'
+ENV ENVSTATE $ENVSTATE
+
 COPY . /app
 
 WORKDIR /app
