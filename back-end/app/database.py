@@ -3,7 +3,7 @@ from bson.objectid import ObjectId
 
 class DataBase:
     def __init__(self):
-        host = 'mongo-server'
+        host = 'localhost'
         port = 27017
         
         #Connect to mongo

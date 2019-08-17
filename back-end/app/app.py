@@ -45,7 +45,7 @@ def find_tags(body):
     boddy_splitted = body.split(" ")
     tags = []
     for segment in boddy_splitted:
-        if segment[0] == '#':
+        if len(segment) > 0 and segment[0] == '#':
             tags.append(segment)
 
     return tags
@@ -73,7 +73,7 @@ def tweet_update():
 def tweet_delete():
     data = request.get_json()
     tweet_id = data['_id']
-    response = db.remove(tweet_id)
+    response = db.delete_tweet(tweet_id)
 
     print('*+++++++*+++++++*+++')
     print(response)
@@ -84,12 +84,18 @@ def tweet_delete():
             'err:': 'faild to deleted the tweet.'
         }        
     else:
-        response = {
-            'status': 'done',
-            'done':'The tweet has ben delete'
-        }
+        if response['ok'] == 1.0:
+            response = {
+                'status': 'done',
+                'done':'The tweet has ben delete'
+            }
+        else:
+            response = {
+                'status':'err',
+                'err:': 'faild to deleted the tweet.'
+            } 
 
-    return "Delete a tweet, comming soon"
+    return jsonify(response)
 
 @app.route('/users/authenticate', methods=['POST'])
 def users_authenticate():
