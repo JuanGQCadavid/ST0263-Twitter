@@ -11,6 +11,7 @@
 # show collections
 # db.users.find().pretty()
 
+#docker build --tag:<name> .
 
 #Clean containers
 docker rm -f $(docker ps -a -q)

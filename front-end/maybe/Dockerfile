@@ -8,7 +8,8 @@ WORKDIR /app
 
 RUN npm install
 
-RUN npm run build -- --prod
+RUN npm run build -- --prod --configuration=dca
+
 
 #Stage 2-> put it on nginx
 

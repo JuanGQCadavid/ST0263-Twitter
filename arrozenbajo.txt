@@ -1,0 +1,61 @@
+version: '3'
+services:
+  reverse:
+    container_name: reverse
+    image: nginx
+    ports:
+      - 80:80
+      - 443:443
+    restart: always
+    volumes:
+      - ./server_config/nginx_config:/etc/nginx
+      - ./server_config/SSL:/ect/ssl/private
+    depends_on:
+      - flask-app
+      - angular-app
+    networks: 
+      - front
+  
+  flask-app:
+    container_name: flask-app
+    restart: always
+    build: ./back-end/app
+    ports:
+      - 5000:5000
+    depends_on:
+      - mongo-server
+    networks: 
+      - back
+      - front
+      - db
+
+  mongo-server:
+    container_name: mongo-server
+    image: mongo
+    volumes:
+      - ./mongo_data:/data/db
+    ports:
+      - 27017:27017
+    restart: always
+    networks: 
+      - db
+
+  angular-app:
+    container_name: angular-app
+    restart: always
+    build: ./front-end/maybe
+    ports:
+      - 4200:4200
+    depends_on:
+      - flask-app
+    networks: 
+      - front
+      - back
+
+networks: 
+  front:
+    driver: custom-driver-1
+  back:
+    driver: custom-driver-1
+  db:
+    driver: custom-driver-1
