@@ -8,6 +8,13 @@ if ! [ -x "$(command -v docker)" ]; then
     sudo chmod +x /usr/local/bin/docker-compose
     sudo usermod -aG docker user1
     
+    # Auto-start on boot
+    sudo systemctl enable docker
+    
+    #Start rigth now
+    sudo systemctl start docker
+    
+    
 else
     echo 'Docker is installed'
 fi
