@@ -13,7 +13,6 @@ services:
       - ./dh-param/dhparam-2048.pem:/etc/ssl/certs/dhparam-2048.pem
       - /docker-volumes/etc/letsencrypt/live/jquiro12.tk/fullchain.pem:/etc/letsencrypt/live/jquiro12.tk/fullchain.pem
       - /docker-volumes/etc/letsencrypt/live/jquiro12.tk/privkey.pem:/etc/letsencrypt/live/jquiro12.tk/privkey.pem
-
     depends_on:
       - flask-app
   
