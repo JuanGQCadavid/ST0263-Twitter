@@ -5,17 +5,19 @@ import { map } from 'rxjs/operators';
 import { of, throwError } from 'rxjs';
 import { User } from '../models/User';
 import { AlertService } from '../services/alert.service'
-
+import {ConnectionService } from './connection.service'
 
 
 @Injectable({ providedIn: 'root' })
 
 export class AuthenticationService {
-    private apiUrl: string  = 'http://localhost:5000';
+    private apiUrl: string  = '';
     private currentUserSubject: BehaviorSubject<User>;
     public currentUser: Observable<User>;
 
-    constructor(private http: HttpClient) {
+    constructor(private http: HttpClient,
+                private connectionService:ConnectionService) {
+        this.apiUrl = connectionService.get_backend_dns()
         this.currentUserSubject = new BehaviorSubject<User>(JSON.parse(localStorage.getItem('currentUser')));
         this.currentUser = this.currentUserSubject.asObservable();
     }

@@ -5,6 +5,7 @@ import { ITweet } from "../models/Tweet";
 @Injectable({
     providedIn: 'root'
 })
+
 export class TweetService{
     private apiUrl: String = '';
 
