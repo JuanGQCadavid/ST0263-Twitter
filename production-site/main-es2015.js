@@ -151,7 +151,7 @@ AppRoutingModule = tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports = "a {\n  cursor: pointer;\n}\n\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbIi9ob21lL2p1YW5ncWNhZGF2aWQvUFJPSkVDVFgvU1QwMjYzLVR3aXR0ZXIvZnJvbnQtZW5kL21heWJlL3NyYy9hcHAvYXBwLmNvbXBvbmVudC5sZXNzIiwic3JjL2FwcC9hcHAuY29tcG9uZW50Lmxlc3MiXSwibmFtZXMiOltdLCJtYXBwaW5ncyI6IkFBQ0E7RUFDSSxlQUFBO0FDQUoiLCJmaWxlIjoic3JjL2FwcC9hcHAuY29tcG9uZW50Lmxlc3MiLCJzb3VyY2VzQ29udGVudCI6WyIvLyBnbG9iYWwgYXBwbGljYXRpb24gc3R5bGVzXG5hIHtcbiAgICBjdXJzb3I6IHBvaW50ZXI7XG59IiwiYSB7XG4gIGN1cnNvcjogcG9pbnRlcjtcbn1cbiJdfQ== */"
+module.exports = "a {\n  cursor: pointer;\n}\n\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbIi9ob21lL2p1YW5ncWNhZGF2aWQvUFJPSkVDVFgvQVdTLVNTTC9TVDAyNjMtVHdpdHRlci9mcm9udC1lbmQvbWF5YmUvc3JjL2FwcC9hcHAuY29tcG9uZW50Lmxlc3MiLCJzcmMvYXBwL2FwcC5jb21wb25lbnQubGVzcyJdLCJuYW1lcyI6W10sIm1hcHBpbmdzIjoiQUFDQTtFQUNJLGVBQUE7QUNBSiIsImZpbGUiOiJzcmMvYXBwL2FwcC5jb21wb25lbnQubGVzcyIsInNvdXJjZXNDb250ZW50IjpbIi8vIGdsb2JhbCBhcHBsaWNhdGlvbiBzdHlsZXNcbmEge1xuICAgIGN1cnNvcjogcG9pbnRlcjtcbn0iLCJhIHtcbiAgY3Vyc29yOiBwb2ludGVyO1xufVxuIl19 */"
 
 /***/ }),
 
@@ -799,15 +799,19 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _angular_common_http__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! @angular/common/http */ "./node_modules/@angular/common/fesm2015/http.js");
 /* harmony import */ var rxjs__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! rxjs */ "./node_modules/rxjs/_esm2015/index.js");
 /* harmony import */ var rxjs_operators__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! rxjs/operators */ "./node_modules/rxjs/_esm2015/operators/index.js");
+/* harmony import */ var _connection_service__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ./connection.service */ "./src/app/services/connection.service.ts");
+
 
 
 
 
 
 let AuthenticationService = class AuthenticationService {
-    constructor(http) {
+    constructor(http, connectionService) {
         this.http = http;
-        this.apiUrl = 'http://localhost:5000';
+        this.connectionService = connectionService;
+        this.apiUrl = '';
+        this.apiUrl = connectionService.get_backend_dns();
         this.currentUserSubject = new rxjs__WEBPACK_IMPORTED_MODULE_3__["BehaviorSubject"](JSON.parse(localStorage.getItem('currentUser')));
         this.currentUser = this.currentUserSubject.asObservable();
     }
@@ -836,7 +840,8 @@ let AuthenticationService = class AuthenticationService {
     }
 };
 AuthenticationService.ctorParameters = () => [
-    { type: _angular_common_http__WEBPACK_IMPORTED_MODULE_2__["HttpClient"] }
+    { type: _angular_common_http__WEBPACK_IMPORTED_MODULE_2__["HttpClient"] },
+    { type: _connection_service__WEBPACK_IMPORTED_MODULE_5__["ConnectionService"] }
 ];
 AuthenticationService = tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
     Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["Injectable"])({ providedIn: 'root' })
@@ -864,7 +869,7 @@ __webpack_require__.r(__webpack_exports__);
 
 let ConnectionService = class ConnectionService {
     constructor() {
-        this.apiUrl = `http://${_environments_environment__WEBPACK_IMPORTED_MODULE_2__["environment"].api_url}:5000`;
+        this.apiUrl = `http://${_environments_environment__WEBPACK_IMPORTED_MODULE_2__["environment"].api_url}`;
     }
     get_backend_dns() {
         return this.apiUrl;
@@ -1198,7 +1203,7 @@ __webpack_require__.r(__webpack_exports__);
 // The list of file replacements can be found in `angular.json`.
 const environment = {
     production: false,
-    api_url: 'flask-app'
+    api_url: 'tweeter.tk/api'
 };
 /*
  * For easier debugging in development mode, you can import the following file
@@ -1245,7 +1250,7 @@ Object(_angular_platform_browser_dynamic__WEBPACK_IMPORTED_MODULE_1__["platformB
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-module.exports = __webpack_require__(/*! /home/juangqcadavid/PROJECTX/ST0263-Twitter/front-end/maybe/src/main.ts */"./src/main.ts");
+module.exports = __webpack_require__(/*! /home/juangqcadavid/PROJECTX/AWS-SSL/ST0263-Twitter/front-end/maybe/src/main.ts */"./src/main.ts");
 
 
 /***/ })

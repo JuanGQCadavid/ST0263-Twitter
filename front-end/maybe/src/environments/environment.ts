@@ -4,7 +4,7 @@
 
 export const environment = {
   production: false,
-  api_url: 'flask-app'
+  api_url: 'tweeter.tk/api'
 };
 
 /*

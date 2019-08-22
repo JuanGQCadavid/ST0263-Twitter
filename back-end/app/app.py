@@ -9,12 +9,12 @@ app = Flask(__name__)
 CORS(app)
 db = None
 
-@app.route('/')
+@app.route('/api')
 def hello_world():
-    return 'Hello perras'
+    return 'Backend Up'
 
 
-@app.route('/tweets/save', methods=['POST'])
+@app.route('/api/tweets/save', methods=['POST'])
 def tweet_save():
     #Create new post
     data = request.get_json()
@@ -53,7 +53,7 @@ def find_tags(body):
 
 
 
-@app.route('/tweets/getAll', methods=['GET'])
+@app.route('/api/tweets/getAll', methods=['GET'])
 def tweets_all():
     tweets = db.get_tweets()
     tweets = tweets[::-1]
@@ -61,16 +61,16 @@ def tweets_all():
     return jsonify(tweets)
 
 
-@app.route('/tweets/comment/' , methods=['POST'])
+@app.route('/api/tweets/comment/' , methods=['POST'])
 def tweet_comment():
 
     return "Comment a tweet, comming soon"
 
-@app.route('/tweets/update/<tweet_id>' , methods=['POST'])
+@app.route('/api/tweets/update/<tweet_id>' , methods=['POST'])
 def tweet_update():
     return "Update a tweet, comming soon"
 
-@app.route('/tweets/delete' , methods=['POST'])
+@app.route('/api/tweets/delete' , methods=['POST'])
 def tweet_delete():
     data = request.get_json()
     tweet_id = data['_id']
@@ -98,7 +98,7 @@ def tweet_delete():
 
     return jsonify(response)
 
-@app.route('/users/authenticate', methods=['POST'])
+@app.route('/api/users/authenticate', methods=['POST'])
 def users_authenticate():
     data = request.get_json()
 
@@ -117,12 +117,12 @@ def users_authenticate():
 
     return jsonify(response)
 
-@app.route('/test/test_db')
+@app.route('/api/test/test_db')
 def test_db():
     db.save_tweet("Testing DB","Reggeton! #YES","TheBackEnd","Today",['#YES'])
     return tweets_all()
 
-@app.route('/users/register', methods=['POST'])
+@app.route('/api/users/register', methods=['POST'])
 def users_interface():
 
     data = request.get_json()
@@ -174,7 +174,7 @@ if __name__ == '__main__':
     
     try:
         db = DataBase(development_state)
-        app.run(host= '0.0.0.0', port= 5000, debug=development_state)
+        app.run(host= '0.0.0.0', port=5000, debug=development_state)
     except KeyboardInterrupt:
         print('Closing server...')
         
