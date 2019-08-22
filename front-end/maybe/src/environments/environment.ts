@@ -4,7 +4,7 @@
 
 export const environment = {
   production: false,
-  api_url: 'https://jquiro12.tk/api'
+  api_url: 'jquiro12.tk/api'
 };
 
 /*
