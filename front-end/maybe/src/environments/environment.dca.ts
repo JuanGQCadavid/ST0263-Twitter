@@ -1,4 +1,4 @@
 export const environment = {
     production: true,
-    api_url: '0.0.0.0'
+    api_url: 'jquiro12.dis.eafit.edu.co/api'
 };
