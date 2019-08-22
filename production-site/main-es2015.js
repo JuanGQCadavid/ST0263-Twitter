@@ -1203,7 +1203,7 @@ __webpack_require__.r(__webpack_exports__);
 // The list of file replacements can be found in `angular.json`.
 const environment = {
     production: false,
-    api_url: 'tweeter.tk/api'
+    api_url: 'jquiro12.tk/api'
 };
 /*
  * For easier debugging in development mode, you can import the following file

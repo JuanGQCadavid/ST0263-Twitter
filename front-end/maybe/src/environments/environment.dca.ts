@@ -1,4 +1,4 @@
 export const environment = {
     production: true,
-    api_url: 'tweeter.tk/api'
+    api_url: 'jquiro12.tk/api'
 };
