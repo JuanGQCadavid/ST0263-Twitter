@@ -908,7 +908,7 @@ __webpack_require__.r(__webpack_exports__);
 
 var ConnectionService = /** @class */ (function () {
     function ConnectionService() {
-        this.apiUrl = "http://" + _environments_environment__WEBPACK_IMPORTED_MODULE_2__["environment"].api_url;
+        this.apiUrl = _environments_environment__WEBPACK_IMPORTED_MODULE_2__["environment"].api_url;
     }
     ConnectionService.prototype.get_backend_dns = function () {
         return this.apiUrl;
@@ -1260,7 +1260,7 @@ __webpack_require__.r(__webpack_exports__);
 // The list of file replacements can be found in `angular.json`.
 var environment = {
     production: false,
-    api_url: 'jquiro12.tk/api'
+    api_url: 'https://jquiro12.tk/api'
 };
 /*
  * For easier debugging in development mode, you can import the following file
