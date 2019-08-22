@@ -1,19 +1,6 @@
-#Stage 1 -> Build node
-FROM node:10.16.0-alpine as node
+FROM nginx:alpine
 
 MAINTAINER Juan Gonzalo Quiroz Cadavid
 
-copy . /app
-WORKDIR /app
-
-RUN npm install
-RUN npm run build -- --prod --configuration=dca
-
-
-#Stage 2-> put it on nginx
-
-FROM nginx:alpine
-
-COPY --from=node /app/dist/maybe /usr/share/nginx/html
-
+copy ./dist/maybe /usr/share/nginx/html
 
